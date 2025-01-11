@@ -1,5 +1,7 @@
 from rest_framework import generics
 from .models import Category, Product
+from rest_framework.permissions import IsAuthenticated
+
 from .serializers import CategorySerializer, ProductSerializer
 
 # Category Views
@@ -34,3 +36,4 @@ class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    permission_classes = [IsAuthenticated]
